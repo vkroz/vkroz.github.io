@@ -3,6 +3,7 @@ Java collections
 
 ### Queues
 
+![Java queues - classes Hierarchy](/diagram.png)
   
   
     BlockingDeque<E>
