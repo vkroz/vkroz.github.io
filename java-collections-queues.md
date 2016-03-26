@@ -13,15 +13,17 @@ Java collections
       java.uti.concurrent.LinkedTransferQueue</li>
 
     AbstractQueue
-    ArrayBlockingQueue
+      ArrayBlockingQueue
+      ConcurrentLinkedQueue
+      DelayQueue
+      LinkedBlockingDeque
+      LinkedBlockingQueue
+      LinkedTransferQueue
+      PriorityBlockingQueue
+      PriorityQueue
+      SynchronousQueue
+    
     ArrayDeque
     ConcurrentLinkedDeque
-    ConcurrentLinkedQueue
-    DelayQueue
-    LinkedBlockingDeque
-    LinkedBlockingQueue
     LinkedList
     LinkedTransferQueue
-    PriorityBlockingQueue
-    PriorityQueue
-    SynchronousQueue
