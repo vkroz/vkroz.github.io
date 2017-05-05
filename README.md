@@ -39,4 +39,5 @@ Having trouble with Pages? Check out our [documentation](https://help.github.com
 ---------
 
 
-JUst trying a link: [posts/20170504_Log4j2_with_Apache_Spark/index.md]
+Trying a link: 
+[posts/20170504_Log4j2_with_Apache_Spark/index.md](posts/20170504_Log4j2_with_Apache_Spark/index.md)
