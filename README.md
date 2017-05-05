@@ -1,5 +1,7 @@
 ## Welcome to GitHub Pages
 
+To view actual site navigate to: http://vkroz.github.io/
+
 You can use the [editor on GitHub](https://github.com/vkroz/vkroz.github.io/edit/master/README.md) to maintain and preview the content for your website in Markdown files.
 
 Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
@@ -39,4 +41,5 @@ Having trouble with Pages? Check out our [documentation](https://help.github.com
 ---------
 
 
-JUst trying a link: [posts/20170504_Log4j2_with_Apache_Spark/index.md]
+Trying a link: 
+[http://vkroz.github.io/posts/20170504_Log4j2_with_Apache_Spark/index.md](posts/20170504_Log4j2_with_Apache_Spark/index.md)
