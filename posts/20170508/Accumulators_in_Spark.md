@@ -39,4 +39,4 @@ and here we can use accumulators for whatever purpose (e.g. reporting)
 Important moment is that accumulators become accessible to driver code once processing stage is complete. 
 
 
-See also [Codahale Metrics with Apache Spark](posts/20170508/Codahale_Metrics_in_Spark.md)
+See also [Codahale Metrics with Apache Spark](/posts/20170508/Codahale_Metrics_in_Spark.md)

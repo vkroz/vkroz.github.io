@@ -10,15 +10,17 @@ With minor effort it is possible to enhance Spark metrics mechanism with applica
 so that they will be visible via the same end-point. 
 
 
-1. Implement `org.apache.spark.metrics.source.Source` interface, which looks like that
-
+1. Implement `org.apache.spark.metrics.source.Source` Sacala interface (implementation on Java is fine, see example below)
+```
         private[spark] trait Source {
+          /** User defined name for this source instance */
           def sourceName: String
+          
+          /** Returns com.codahale.metrics.MetricRegistry instance containing registered metrics */
           def metricRegistry: MetricRegistry
         }
-
-`metricRegistry` is a key part here. This is a Codahale registry which should contain all your metrics. 
-
+```        
+ 
 2. Register mertrics source with Spark runtime environment
 
        SparkEnv.get().metricsSystem().registerSource(source);
@@ -74,4 +76,4 @@ Initialize instrumentation in the Spark driver code
 
 
 
-See also [Accumulators in Apache Spark](posts/20170508/Accumulators_in_Spark.md)
+See also [Accumulators in Apache Spark](/posts/20170508/Accumulators_in_Spark.md)
