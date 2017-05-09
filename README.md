@@ -6,7 +6,6 @@
 - tbd
 - [Queues in Java Collections](posts/20140000/Queues_in_Java_Collections.md)
 
----------
 
 **Gitpages Quick info**
 
