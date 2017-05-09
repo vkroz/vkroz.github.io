@@ -10,5 +10,68 @@ With minor effort it is possible to enhance Spark metrics mechanism with applica
 so that they will be visible via the same end-point. 
 
 
+1. Implement `org.apache.spark.metrics.source.Source` interface, which looks like that
+
+        private[spark] trait Source {
+          def sourceName: String
+          def metricRegistry: MetricRegistry
+        }
+
+`metricRegistry` is a key part here. This is a Codahale registry which should contain all your metrics. 
+
+2. Register mertrics source with Spark runtime environment
+
+       SparkEnv.get().metricsSystem().registerSource(source);
+
+    
+## Full example
+
+`Source` application-specific implementation 
+    
+    import org.apache.spark.metrics.source.Source;
+    import com.codahale.metrics.MetricRegistry;
+    import org.apache.spark.Accumulator;
+    import com.codahale.metrics.Gauge;
+
+    public class InstrumentationSource implements Source {
+    
+        private String         sourceName        = "my.spark.app";
+        private MetricRegistry metricsRegistry   = new MetricRegistry();
+    
+        public void registerAccumulator(final Accumulator<Integer> accumulator, final String name) {
+            metricsRegistry.register(MetricRegistry.name(name),    
+                new Gauge<Long>() {
+                    @Override
+                    public Long getValue() {
+                        return Long.valueOf(accumulator.value());
+                    }
+                });
+        }
+       
+        @Override
+        public MetricRegistry metricRegistry() {
+            return this.metricsRegistry;
+        }
+    
+        @Override
+        public String sourceName() {
+            return this.sourceName;
+        }
+    
+    }
 
 
+Initialize instrumentation in the Spark driver code
+    
+    private void prepareInstrumentation(JavaSparkContext sc) {
+        InstrumentationSource source = new InstrumentationSource();
+
+        Accumulator<Integer> accumulator = sc.accumulator(0, "my_accumulator");
+        source.registerAccumulator(accumulator, name);
+
+        SparkEnv.get().metricsSystem().registerSource(source);
+    }
+
+
+
+See also [Accumulators in Apache Spark](posts/20170508/Accumulators_in_Spark.md)
