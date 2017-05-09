@@ -1,7 +1,4 @@
-Java collections
-=======
-
-## Queues
+## Queues in Java Collections
 
 ![Java queues - classes Hierarchy](/diagram.png)
   
