@@ -6,6 +6,7 @@
 - [Codahale Metrics with Apache Spark](posts/20170508/Codahale_Metrics_in_Spark.md)
 - xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 - [Queues in Java Collections](posts/20140000/Queues_in_Java_Collections.md)
+- [Kibana cookbook](docs/timelion/index.md) 
 
 
 **Gitpages Quick info**

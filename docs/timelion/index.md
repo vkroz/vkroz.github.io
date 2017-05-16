@@ -1,3 +1,8 @@
+# Kibana cookbook
+
+Based on tutorial by Rashid Khan https://www.elastic.co/elasticon/conf/2017/sf/timelion-magic-math-and-everything-in-the-middle
+ 
+
 ## Put 2 graphs on 1 chart
 
 ![](./images/es_with_2_metrics.png)
