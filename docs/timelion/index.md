@@ -89,3 +89,60 @@ And using subtract we can show difference between corresponding times
 ```
 ![](images/subtract_offset.png)
 
+
+# Filling blanks
+
+## fit()
+
+Requirement: series have a gap in the timeline, where we don't have data. Need to fill this gap 
+
+Solution: use `fit` function. This function takes an argument, which determine how exactly to connect the line. 
+ 
+```
+.es(metric=avg:bytes).fit(average)
+```
+![](images/fit_average.png)
+
+## interval
+
+### fit=nearest
+```
+.es(), .es(interval=1w, fit=nearest)
+```
+
+![](images/es_interval_fit_nearest.png)
+
+### fit=scale
+```
+.es(), .es(interval=1w, fit=scale)
+```
+
+![](images/es_interval_fit_nearest.png)
+
+
+# Smoothing and moving averages 
+
+
+## mvavg()
+```
+(.es(), .es().aggregate(avg), .es().trend()).color(#eee:#ccc), es().mvavg(7)
+```
+
+![](images/smoothing_and_mvavg.png)
+
+## Exponential smoothing
+```
+.es(), .es().holt(0.3, 0.8, 1w)
+```
+
+
+# Various styling
+
+```
+.es(-US, split=geo.country_code:50)
+    .legend(false)
+        .lines(stack=true, fill=10)
+            .color(red:green:yellow:black)
+```
+![](images/various_styling.png)
+
