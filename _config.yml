@@ -21,3 +21,4 @@
 exclude:
   - Gemfile
   - Gemfile.lock
+include: ["_sources", "_static", "_images"]

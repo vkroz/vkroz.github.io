@@ -1,5 +1,9 @@
 Sources for http://vkroz.github.io/
 
+
+Building Sphinx documentation
+
+
 **Gitpages Quick info**
 
 You can use the [editor on GitHub](https://github.com/vkroz/vkroz.github.io/edit/master/README.md) to maintain and preview the content for your website in Markdown files.

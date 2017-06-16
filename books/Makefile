@@ -6,7 +6,7 @@ SPHINXOPTS    =
 SPHINXBUILD   = python -msphinx
 SPHINXPROJ    = KibanaCookbook
 SOURCEDIR     = source
-BUILDDIR      = build
+BUILDDIR      = ../kibana
 
 # Put it first so that "make" without argument is like "make help".
 help:
