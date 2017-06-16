@@ -1,1 +1,3 @@
-# Created by .ignore support plugin (hsz.mobi)
+keep._site.bak
+.sass-cache
+.jekyll-metadata

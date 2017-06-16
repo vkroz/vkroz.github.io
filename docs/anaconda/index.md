@@ -77,3 +77,12 @@ If you don't know the exact name of the package, try searching it
 # Anaconda
 
 Install from [https://www.continuum.io/downloads]()
+
+
+
+
+
+DFW
+-------
+KAFKA_BROKERS=dfw-kafka-broker00-catdev.prod.walmart.com:9093,dfw-kafka-broker01-catdev.prod.walmart.com:9093,dfw-kafka-broker02-catdev.prod.walmart.com:9093
+ZK_HOSTS=dfw-kafka-broker00-catdev.prod.walmart.com:9182,dfw-kafka-broker01-catdev.prod.walmart.com:9182,dfw-kafka-broker03-catdev.prod.walmart.com:9182
