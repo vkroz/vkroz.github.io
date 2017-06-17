@@ -1,0 +1,259 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Visualize recepies &mdash; Kibana Cookbook 5.4 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="genindex.html"/>
+        <link rel="search" title="Search" href="search.html"/>
+    <link rel="top" title="Kibana Cookbook 5.4 documentation" href="index.html"/>
+        <link rel="next" title="Timelion recepies" href="timelion.html"/>
+        <link rel="prev" title="Kibana Cookbook" href="index.html"/> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> Kibana Cookbook
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                5.4
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Visualize recepies</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#line-area-and-bar-charts">Line, Area, and Bar charts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#tile-maps">Tile Maps</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="timelion.html">Timelion recepies</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="timelion.html#put-2-graphs-on-1-chart">Put 2 graphs on 1 chart</a></li>
+<li class="toctree-l2"><a class="reference internal" href="timelion.html#supply-queries-multiple-times">Supply queries multiple times</a></li>
+<li class="toctree-l2"><a class="reference internal" href="timelion.html#leverage-es-terms-aggregation-to-avoid-explicit-values-typing">Leverage ES terms aggregation to avoid explicit values typing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="timelion.html#compare-2-charts-side-by-side">Compare 2 charts side-by-side</a></li>
+<li class="toctree-l2"><a class="reference internal" href="timelion.html#having-multiple-queries-on-the-same-chart">Having multiple queries on the same chart</a></li>
+<li class="toctree-l2"><a class="reference internal" href="timelion.html#using-range-function-to-align-values-scale">Using <code class="docutils literal"><span class="pre">range()</span></code> function to align values scale</a></li>
+<li class="toctree-l2"><a class="reference internal" href="timelion.html#using-formulas-and-computations-to-calculate-percentage">Using formulas and computations to calculate percentage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="timelion.html#derivative-functions-how-data-is-changing">Derivative functions (how data is changing)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="timelion.html#using-offsets-to-compare-series-from-different-periods-side-by-side">Using offsets to compare series from different periods side by side</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Kibana Cookbook</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>Visualize recepies</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/visualize.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="visualize-recepies">
+<h1>Visualize recepies<a class="headerlink" href="#visualize-recepies" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="line-area-and-bar-charts">
+<h2>Line, Area, and Bar charts<a class="headerlink" href="#line-area-and-bar-charts" title="Permalink to this headline">¶</a></h2>
+<img alt="_images/es_with_2_metrics.png" src="_images/es_with_2_metrics.png" />
+</div>
+<div class="section" id="tile-maps">
+<h2>Tile Maps<a class="headerlink" href="#tile-maps" title="Permalink to this headline">¶</a></h2>
+<img alt="_images/multiple_queries.png" src="_images/multiple_queries.png" />
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="timelion.html" class="btn btn-neutral float-right" title="Timelion recepies" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="index.html" class="btn btn-neutral" title="Kibana Cookbook" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, Vladimir Kroz.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'5.4',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

@@ -1,0 +1,388 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Timelion recepies &mdash; Kibana Cookbook 5.4 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="genindex.html"/>
+        <link rel="search" title="Search" href="search.html"/>
+    <link rel="top" title="Kibana Cookbook 5.4 documentation" href="index.html"/>
+        <link rel="prev" title="Visualize recepies" href="visualize.html"/> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> Kibana Cookbook
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                5.4
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="visualize.html">Visualize recepies</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="visualize.html#line-area-and-bar-charts">Line, Area, and Bar charts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="visualize.html#tile-maps">Tile Maps</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Timelion recepies</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#put-2-graphs-on-1-chart">Put 2 graphs on 1 chart</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#supply-queries-multiple-times">Supply queries multiple times</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#leverage-es-terms-aggregation-to-avoid-explicit-values-typing">Leverage ES terms aggregation to avoid explicit values typing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#compare-2-charts-side-by-side">Compare 2 charts side-by-side</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#having-multiple-queries-on-the-same-chart">Having multiple queries on the same chart</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#using-range-function-to-align-values-scale">Using <code class="docutils literal"><span class="pre">range()</span></code> function to align values scale</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#using-formulas-and-computations-to-calculate-percentage">Using formulas and computations to calculate percentage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#derivative-functions-how-data-is-changing">Derivative functions (how data is changing)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#using-offsets-to-compare-series-from-different-periods-side-by-side">Using offsets to compare series from different periods side by side</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#filling-blanks">Filling blanks</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#fit"><code class="docutils literal"><span class="pre">fit()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#interval">Interval</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#fit-nearest"><code class="docutils literal"><span class="pre">fit=nearest</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#fit-scale"><code class="docutils literal"><span class="pre">fit=scale</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#smoothing-and-moving-averages">Smoothing and moving averages</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#mvavg"><code class="docutils literal"><span class="pre">mvavg()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#exponential-smoothing">Exponential smoothing</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#various-styling">Various styling</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Kibana Cookbook</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>Timelion recepies</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/timelion.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="timelion-recepies">
+<h1>Timelion recepies<a class="headerlink" href="#timelion-recepies" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="put-2-graphs-on-1-chart">
+<h2>Put 2 graphs on 1 chart<a class="headerlink" href="#put-2-graphs-on-1-chart" title="Permalink to this headline">¶</a></h2>
+<img alt="_images/es_with_2_metrics.png" src="_images/es_with_2_metrics.png" />
+</div>
+<div class="section" id="supply-queries-multiple-times">
+<h2>Supply queries multiple times<a class="headerlink" href="#supply-queries-multiple-times" title="Permalink to this headline">¶</a></h2>
+<img alt="_images/multiple_queries.png" src="_images/multiple_queries.png" />
+</div>
+<div class="section" id="leverage-es-terms-aggregation-to-avoid-explicit-values-typing">
+<h2>Leverage ES terms aggregation to avoid explicit values typing<a class="headerlink" href="#leverage-es-terms-aggregation-to-avoid-explicit-values-typing" title="Permalink to this headline">¶</a></h2>
+<p>Here we select top 5 countries using ES terms aggregation</p>
+<img alt="_images/top_5_using_terms_aggregation.png" src="_images/top_5_using_terms_aggregation.png" />
+</div>
+<div class="section" id="compare-2-charts-side-by-side">
+<h2>Compare 2 charts side-by-side<a class="headerlink" href="#compare-2-charts-side-by-side" title="Permalink to this headline">¶</a></h2>
+<img alt="_images/compare_2_charts_side_by_side.png" src="_images/compare_2_charts_side_by_side.png" />
+</div>
+<div class="section" id="having-multiple-queries-on-the-same-chart">
+<h2>Having multiple queries on the same chart<a class="headerlink" href="#having-multiple-queries-on-the-same-chart" title="Permalink to this headline">¶</a></h2>
+<p>We combine here several graphs, each having it’s own y-axis, and also label defined for axis #4,</p>
+<img alt="_images/multiple_queries_on_one_chart1.png" src="_images/multiple_queries_on_one_chart1.png" />
+</div>
+<div class="section" id="using-range-function-to-align-values-scale">
+<h2>Using <code class="docutils literal"><span class="pre">range()</span></code> function to align values scale<a class="headerlink" href="#using-range-function-to-align-values-scale" title="Permalink to this headline">¶</a></h2>
+<p>What if we just need to compare shapes, and we don’t have explicit names for the countries?
+Use range() function and terms aggregation using split()</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span></span><span class="p">.</span><span class="nx">es</span><span class="p">(</span><span class="nx">split</span><span class="o">=</span><span class="nx">geo</span><span class="p">.</span><span class="nx">country_code</span><span class="o">:</span><span class="mi">5</span><span class="p">).</span><span class="nx">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">100</span><span class="p">)</span>
+</pre></div>
+</div>
+<img alt="_images/multiple_queries_combine_using_split_and_range.png" src="_images/multiple_queries_combine_using_split_and_range.png" />
+</div>
+<div class="section" id="using-formulas-and-computations-to-calculate-percentage">
+<h2>Using formulas and computations to calculate percentage<a class="headerlink" href="#using-formulas-and-computations-to-calculate-percentage" title="Permalink to this headline">¶</a></h2>
+<p>Requirement: Show how much percents of total traffic volume make top 5 countries</p>
+<p>Solution:</p>
+<p>We will need to implement formula:</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span></span><span class="s2">&quot;top 5 percents&quot;</span> <span class="o">=</span> <span class="s2">&quot;traffic from top 5 countries&quot;</span> <span class="o">/</span> <span class="s2">&quot;total traffic volume&quot;</span> <span class="o">*</span> <span class="mi">100</span>
+</pre></div>
+</div>
+<p>This is how it will look in timelion language</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span></span><span class="p">.</span><span class="nx">es</span><span class="p">(</span><span class="nx">split</span><span class="o">=</span><span class="nx">geo</span><span class="p">.</span><span class="nx">country_code</span><span class="o">:</span><span class="mi">5</span><span class="p">).</span><span class="nx">add</span><span class="p">().</span><span class="nx">label</span><span class="p">(</span><span class="s2">&quot;top 5&quot;</span><span class="p">).</span><span class="nx">divide</span><span class="p">(.</span><span class="nx">es</span><span class="p">()).</span><span class="nx">multiple</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
+</pre></div>
+</div>
+<img alt="_images/compute_percentage.png" src="_images/compute_percentage.png" />
+</div>
+<div class="section" id="derivative-functions-how-data-is-changing">
+<h2>Derivative functions (how data is changing)<a class="headerlink" href="#derivative-functions-how-data-is-changing" title="Permalink to this headline">¶</a></h2>
+<p>Shows speed of change in data</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span></span><span class="p">.</span><span class="nx">es</span><span class="p">().</span><span class="nx">derivative</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Acceleration</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span></span><span class="p">.</span><span class="nx">es</span><span class="p">().</span><span class="nx">derivative</span><span class="p">().</span><span class="nx">derivative</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="using-offsets-to-compare-series-from-different-periods-side-by-side">
+<h2>Using offsets to compare series from different periods side by side<a class="headerlink" href="#using-offsets-to-compare-series-from-different-periods-side-by-side" title="Permalink to this headline">¶</a></h2>
+<p>Requirement: show how traffic from today compares to traffic from past week</p>
+<p>Solution: use <code class="docutils literal"><span class="pre">offset</span></code> argument of datasource query.</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span></span><span class="p">.</span><span class="nx">es</span><span class="p">(),</span> <span class="p">.</span><span class="nx">es</span><span class="p">(</span><span class="nx">offset</span><span class="o">=-</span><span class="mi">1</span><span class="nx">w</span><span class="p">)</span>
+</pre></div>
+</div>
+<img alt="_images/offset.png" src="_images/offset.png" />
+<p>And using subtract we can show difference between corresponding times</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span></span><span class="p">.</span><span class="nx">es</span><span class="p">().</span><span class="nx">subtract</span><span class="p">(.</span><span class="nx">es</span><span class="p">(</span><span class="nx">offset</span><span class="o">=-</span><span class="mi">1</span><span class="nx">w</span><span class="p">))</span>
+</pre></div>
+</div>
+<img alt="_images/subtract_offset.png" src="_images/subtract_offset.png" />
+</div>
+<div class="section" id="filling-blanks">
+<h2>Filling blanks<a class="headerlink" href="#filling-blanks" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="fit">
+<h3><code class="docutils literal"><span class="pre">fit()</span></code><a class="headerlink" href="#fit" title="Permalink to this headline">¶</a></h3>
+<p>Requirement: series have a gap in the timeline, where we don’t have data. Need to fill this gap</p>
+<p>Solution: use <code class="docutils literal"><span class="pre">fit</span></code> function. This function takes an argument, which determine how exactly to connect the line.</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span></span><span class="p">.</span><span class="nx">es</span><span class="p">(</span><span class="nx">metric</span><span class="o">=</span><span class="nx">avg</span><span class="o">:</span><span class="nx">bytes</span><span class="p">).</span><span class="nx">fit</span><span class="p">(</span><span class="nx">average</span><span class="p">)</span>
+</pre></div>
+</div>
+<img alt="_images/fit_average.png" src="_images/fit_average.png" />
+</div>
+</div>
+<div class="section" id="interval">
+<h2>Interval<a class="headerlink" href="#interval" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="fit-nearest">
+<h3><code class="docutils literal"><span class="pre">fit=nearest</span></code><a class="headerlink" href="#fit-nearest" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-javascript"><div class="highlight"><pre><span></span><span class="p">.</span><span class="nx">es</span><span class="p">(),</span> <span class="p">.</span><span class="nx">es</span><span class="p">(</span><span class="nx">interval</span><span class="o">=</span><span class="mi">1</span><span class="nx">w</span><span class="p">,</span> <span class="nx">fit</span><span class="o">=</span><span class="nx">nearest</span><span class="p">)</span>
+</pre></div>
+</div>
+<img alt="_images/es_interval_fit_nearest.png" src="_images/es_interval_fit_nearest.png" />
+</div>
+<div class="section" id="fit-scale">
+<h3><code class="docutils literal"><span class="pre">fit=scale</span></code><a class="headerlink" href="#fit-scale" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-javascript"><div class="highlight"><pre><span></span><span class="p">.</span><span class="nx">es</span><span class="p">(),</span> <span class="p">.</span><span class="nx">es</span><span class="p">(</span><span class="nx">interval</span><span class="o">=</span><span class="mi">1</span><span class="nx">w</span><span class="p">,</span> <span class="nx">fit</span><span class="o">=</span><span class="nx">scale</span><span class="p">)</span>
+</pre></div>
+</div>
+<img alt="_images/es_interval_fit_nearest.png" src="_images/es_interval_fit_nearest.png" />
+</div>
+</div>
+<div class="section" id="smoothing-and-moving-averages">
+<h2>Smoothing and moving averages<a class="headerlink" href="#smoothing-and-moving-averages" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="mvavg">
+<h3><code class="docutils literal"><span class="pre">mvavg()</span></code><a class="headerlink" href="#mvavg" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-javascript"><div class="highlight"><pre><span></span>(.es(), .es().aggregate(avg), .es().trend()).color(#eee:#ccc), es().mvavg(7)
+</pre></div>
+</div>
+<img alt="_images/smoothing_and_mvavg.png" src="_images/smoothing_and_mvavg.png" />
+</div>
+<div class="section" id="exponential-smoothing">
+<h3>Exponential smoothing<a class="headerlink" href="#exponential-smoothing" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-javascript"><div class="highlight"><pre><span></span><span class="p">.</span><span class="nx">es</span><span class="p">(),</span> <span class="p">.</span><span class="nx">es</span><span class="p">().</span><span class="nx">holt</span><span class="p">(</span><span class="mf">0.3</span><span class="p">,</span> <span class="mf">0.8</span><span class="p">,</span> <span class="mi">1</span><span class="nx">w</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="various-styling">
+<h2>Various styling<a class="headerlink" href="#various-styling" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-javascript"><div class="highlight"><pre><span></span><span class="p">.</span><span class="nx">es</span><span class="p">(</span><span class="o">-</span><span class="nx">US</span><span class="p">,</span> <span class="nx">split</span><span class="o">=</span><span class="nx">geo</span><span class="p">.</span><span class="nx">country_code</span><span class="o">:</span><span class="mi">50</span><span class="p">)</span>
+    <span class="p">.</span><span class="nx">legend</span><span class="p">(</span><span class="kc">false</span><span class="p">)</span>
+        <span class="p">.</span><span class="nx">lines</span><span class="p">(</span><span class="nx">stack</span><span class="o">=</span><span class="kc">true</span><span class="p">,</span> <span class="nx">fill</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+            <span class="p">.</span><span class="nx">color</span><span class="p">(</span><span class="nx">red</span><span class="o">:</span><span class="nx">green</span><span class="o">:</span><span class="nx">yellow</span><span class="o">:</span><span class="nx">black</span><span class="p">)</span>
+</pre></div>
+</div>
+<img alt="_images/various_styling.png" src="_images/various_styling.png" />
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+      
+        <a href="visualize.html" class="btn btn-neutral" title="Visualize recepies" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, Vladimir Kroz.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'5.4',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>
