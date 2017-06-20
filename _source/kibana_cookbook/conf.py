@@ -16,6 +16,8 @@
 # add these directories to sys.path here. If the directory is relative to the
 # documentation root, use os.path.abspath to make it absolute, like shown here.
 #
+# See all options: https://github.com/rtfd/sphinx_rtd_theme/blob/9170fca5a2a1992b0703a9389c7143fa13dabb15/demo_docs/source/conf.py
+#
 # import os
 # import sys
 # sys.path.insert(0, os.path.abspath('.'))
@@ -96,6 +98,9 @@ html_theme_options = {
     'collapse_navigation': False,
 }
 
+# If true, links to the reST sources are added to the pages.
+html_show_sourcelink = False
+
 # Add any paths that contain custom static files (such as style sheets) here,
 # relative to this directory. They are copied after the builtin static files,
 # so a file named "default.css" will overwrite the builtin "default.css".
@@ -105,7 +110,7 @@ html_static_path = ['_static']
 # -- Options for HTMLHelp output ------------------------------------------
 
 # Output file base name for HTML help builder.
-htmlhelp_basename = 'KibanaCookbookdoc'
+htmlhelp_basename = 'KibanaCookbook'
 
 
 # -- Options for LaTeX output ---------------------------------------------
@@ -142,8 +147,7 @@ latex_documents = [
 # One entry per manual page. List of tuples
 # (source start file, name, description, authors, manual section).
 man_pages = [
-    (master_doc, 'kibanacookbook', u'Kibana Cookbook Documentation',
-     [author], 1)
+    (master_doc, 'kibanacookbook', u'Kibana Cookbook Documentation', [author], 1)
 ]
 
 
