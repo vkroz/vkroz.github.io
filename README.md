@@ -1,8 +1,11 @@
-## Posts
+## Kibana Cookbook
 
+[Kibana Cookbook](kibana_cookbook/html/index.html)
 
+## Posts and snippets
 
-- [Kibana Cookbook](kibana_cookbook/html/index.html)
+- [How to handle control-c in Java](posts/20170630-Java-interrupt-hook.md)
+- [Kafka Streams Getting Started](posts/20170630-Kafka-streams-getting-started.md)
 
 ---------
 
