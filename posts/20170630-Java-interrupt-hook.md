@@ -20,7 +20,7 @@ How to gracefully shutdown multi-threaded application on terminate signal
 
         // Here we enter wait state until control-c will be pressed
         try {
-            workInProgressBarrier.await();
+            doneSignal.await();
         } catch (InterruptedException e) {
         }
 
