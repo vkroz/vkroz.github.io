@@ -1,6 +1,17 @@
 Content for http://vkroz.github.io/
 ====================================
 
+Project structure
+-----------------
+
+- **_source/**      Sphinx documentation sources
+- **posts/**        Manually created and manually structured posts
+- **scripts/**      Build scripts
+- **cheatsheets/**, **docs/**  Ad-hoc notes
+- **_site/**        Jekyll build output
+
+
+
 Installing
 ----------
 Install ruby & Jekyll
@@ -15,12 +26,12 @@ Install Sphynx
 
 
 Building Sphinx documentation
----------------------------------------
+-----------------------------
 
     ./scripts/build.sh
 
 Running git-pages locally
----------------------------------------
+-------------------------
 
 1. Start Jekyll
         ./scripts/run.sh
