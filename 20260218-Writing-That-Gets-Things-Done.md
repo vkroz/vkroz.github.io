@@ -24,54 +24,30 @@ Apply the "so what" test to every sentence: if it does not drive a decision or s
 
 **Good vs bad examples:**
 
-Performance claims
 
-| ❌ Bad writing | ✅ Good writing |
-| ----- | ----- |
-| "The new model is much faster" | "Inference latency dropped from 340ms to 40ms (88% reduction) after deploying the quantized model on Feb 14, 2026" |
 
-Scale and impact
-
-| ❌ Bad writing | ✅ Good writing |
-| ----- | ----- |
-| "Most users were affected" | "73% of active users (12,400 accounts) experienced degraded response times between 14:00 and 16:30 UTC on Feb 12, 2026" |
-
-Effort and timelines
-
-| ❌ Bad writing | ✅ Good writing |
-| ----- | ----- |
-| "This will take a while to implement" | "Full implementation requires 6 weeks: 2 weeks for backend refactor, 3 weeks for QA, 1 week for staged rollout" |
-
-Cost and resources
-
-| ❌ Bad writing | ✅ Good writing |
-| ----- | ----- |
-|  "Cloud costs have gone up" | "AWS spend increased 34% month-over-month, from $42K in Dec 2025 to $56K in Jan 2026, driven by untagged EC2 instances in us-east-1" |
+| Subject | ❌ Bad writing | ✅ Good writing |
+| ----- | ----- | ----- |
+| Performance claims | "The new model is much faster" | "Inference latency dropped from 340ms to 40ms (88% reduction) after deploying the quantized model on Feb 14, 2026" |
+| Scale and impact | "Most users were affected" | "73% of active users (12,400 accounts) experienced degraded response times between 14:00 and 16:30 UTC on Feb 12, 2026" |
+| Effort and timelines | "This will take a while to implement" | "Full implementation requires 6 weeks: 2 weeks for backend refactor, 3 weeks for QA, 1 week for staged rollout" |
+| Cost and resources | "Cloud costs have gone up" | "AWS spend increased 34% month-over-month, from $42K in Dec 2025 to $56K in Jan 2026, driven by untagged EC2 instances in us-east-1" |
 
 ## Write for Time: Absolute References Only
 
 Documents outlive their context. Relative time references decay the moment a document is saved. A new team member, a cross-functional partner, or a future reader should understand your document without a decoder ring. Never assume shared context — spell out every acronym and unit on first use.
 
-**Time references:**
-
-| ❌ Bad writing | ✅ Good writing |
-| ----- | ----- |
-| "We deployed the fix last week" | "We deployed the fix on Feb 12, 2026" |
-| "The issue started recently" | "The issue started on Jan 28, 2026 at 14:23 UTC" |
-
-**Acronyms and units:**
-
-| ❌ Bad writing | ✅ Good writing |
-| ----- | ----- |
-| "p99 latency exceeded SLA thresholds" | "99th-percentile (p99) latency exceeded the 200ms service level agreement (SLA) threshold" |
-| "Cost increased by 2.4M" | "Cost increased by $2.4M (USD), from $7.1M in Q3 2025 to $9.5M in Q4 2025" |
-
-**Shared context:**
-
-| ❌ Bad writing | ✅ Good writing |
-| ----- | ----- |
-| "As discussed in the last meeting" | "As agreed in the architecture review on Feb 10, 2026" |
-| "Per the previous proposal" | "Per the cost optimization proposal submitted on Jan 15, 2026" |
+| Subject | ❌ Bad writing | ✅ Good writing |
+| ----- | ----- | ----- |
+| Time references | "We deployed the fix last week" | "We deployed the fix on Feb 12, 2026" |
+|  | "The issue started recently" | "The issue started on Jan 28, 2026 at 14:23 UTC" |
+| | |
+| Acronyms and units | "p99 latency exceeded SLA thresholds" | "99th-percentile (p99) latency exceeded the 200ms service level agreement (SLA) threshold" |
+| | "Cost increased by 2.4M" | "Cost increased by $2.4M (USD), from $7.1M in Q3 2025 to $9.5M in Q4 2025" |
+| | |
+| Shared context | "As discussed in the last meeting" | "As agreed in the architecture review on Feb 10, 2026" |
+| | "Per the previous proposal" | "Per the cost optimization proposal submitted on Jan 15, 2026" |
+| | |
 
 ## **Writing Style Checklist**
 
@@ -83,66 +59,29 @@ Most documents fail the same way: vague claims that hide behind adjectives, pass
 
 **Check the logic:** Each paragraph makes one argument. Paragraphs flow — topic sentence, evidence, link to next. The document answers a clear question or drives a specific decision. If you cannot state that question in one sentence, revise until you can.
 
-**Examples:**
-
-☑ No weasel words — qualifiers that hedge claims without adding information:
-
-| ❌ Bad writing | ✅ Good writing |
-| ----- | ----- |
-| "This approach might improve performance" | "This approach reduced p99 latency by 40ms in staging tests on Feb 10, 2026" |
-| "Some teams have reported issues" | "3 of 12 teams reported authentication failures after the Feb 14, 2026 deployment" |
-| "This could significantly impact revenue" | "Based on Feb 2026 traffic, a 200ms latency increase would affect 8,400 checkout sessions per day, risking $62K in daily revenue" |
-
-☑No peacock words — claims of superiority with no supporting data:
-
-| ❌ Bad writing | ✅ Good writing |
-| :---- | :---- |
-| "We built a cutting-edge, best-in-class ML pipeline" | "Our ML pipeline processes 1.2M events per second with p99 latency under 18ms, as measured on Feb 15, 2026" |
-| "This is an innovative solution to the problem" | "This solution eliminates the manual reconciliation step, reducing processing time from 4 hours to 11 minutes" |
-| "We leverage state-of-the-art infrastructure" | "We run on GKE with autoscaling across 3 regions, handling up to 40K requests per second" |
-
-☑Every claim backed by data or a cited source:
-
-| ❌ Bad writing | ✅ Good writing |
-| :---- | :---- |
-| "Users prefer the new interface" | "In the Feb 2026 usability study (n=120), 78% of users completed the checkout flow without assistance, up from 51% in Jan 2026" |
-| "The competitor's product is slower" | "In our Feb 12, 2026 benchmark, our API returned results in 42ms vs. 310ms for Competitor X under identical load conditions" |
-
-**Tighten the writing:**
-
-☑Each sentence under 30 words, one message each:
-
-| ❌ Bad writing | ✅ Good writing |
-| :---- | :---- |
-| "The system was experiencing elevated error rates which caused the on-call engineer to be paged and subsequently the incident response process was initiated at 02:14 UTC" | "Error rates exceeded 5% at 02:11 UTC on Feb 16, 2026\. The on-call engineer was paged at 02:14 UTC. Incident response started immediately." |
-
-☑Active voice throughout:
-
-| ❌ Bad writing | ✅ Good writing |
-| :---- | :---- |
-| "The deployment was rolled back by the platform team" | "The platform team rolled back the deployment at 03:42 UTC on Feb 16, 2026" |
-| "A decision was made to proceed with Option B" | "The architecture review panel decided on Feb 10, 2026 to proceed with Option B" |
-
-☑No relative time references:
-
-| ❌ Bad writing | ✅ Good writing |
-| :---- | :---- |
-| "We recently completed the migration and will finalize the cleanup soon" | "We completed the migration on Feb 9, 2026\. Cleanup is scheduled for Feb 28, 2026" |
-
-**Check the logic:**
-
-☑Each paragraph makes one argument:
-
-| ❌ Bad writing | ✅ Good writing |
-| :---- | :---- |
-| "Caching reduced latency. We also need to hire two engineers. The database is running out of disk space." | Three separate paragraphs, each covering one topic with supporting evidence and a clear next step |
-
-☑The document answers a clear question or drives a specific decision:
-
-| ❌ Bad writing | ✅ Good writing |
-| :---- | :---- |
-| A document titled "Q1 Infrastructure Update" covering 12 unrelated topics with no recommended action | A document titled "Decision Required: Migrate Search to Elasticsearch by Mar 31, 2026 — Cost, Risk, and Recommended Path" |
-| "This document covers various aspects of our current architecture and some thoughts on potential future directions" | "This document recommends migrating to microservices by Q3 2026 and requests approval to staff a 4-person migration team starting Mar 1, 2026" |
+| Rubric | ❌ Bad writing | ✅ Good writing |
+| ----- | ----- | ----- |
+| ☑ No weasel words — qualifiers that hedge claims without adding information | "This approach might improve performance" | "This approach reduced p99 latency by 40ms in staging tests on Feb 10, 2026" |
+|  | "Some teams have reported issues" | "3 of 12 teams reported authentication failures after the Feb 14, 2026 deployment" |
+|  | "This could significantly impact revenue" | "Based on Feb 2026 traffic, a 200ms latency increase would affect 8,400 checkout sessions per day, risking $62K in daily revenue" |
+| | |
+| ☑ No peacock words — claims of superiority with no supporting data | "We built a cutting-edge, best-in-class ML pipeline" | "Our ML pipeline processes 1.2M events per second with p99 latency under 18ms, as measured on Feb 15, 2026" |
+|  | "This is an innovative solution to the problem" | "This solution eliminates the manual reconciliation step, reducing processing time from 4 hours to 11 minutes" |
+|  | "We leverage state-of-the-art infrastructure" | "We run on GKE with autoscaling across 3 regions, handling up to 40K requests per second" |
+| | |
+| ☑ Every claim backed by data or a cited source | "Users prefer the new interface" | "In the Feb 2026 usability study (n=120), 78% of users completed the checkout flow without assistance, up from 51% in Jan 2026" |
+|  | "The competitor's product is slower" | "In our Feb 12, 2026 benchmark, our API returned results in 42ms vs. 310ms for Competitor X under identical load conditions" |
+| | |
+| ☑ Each sentence under 30 words, one message each | "The system was experiencing elevated error rates which caused the on-call engineer to be paged and subsequently the incident response process was initiated at 02:14 UTC" | "Error rates exceeded 5% at 02:11 UTC on Feb 16, 2026\. The on-call engineer was paged at 02:14 UTC. Incident response started immediately." |
+| | |
+| ☑ Active voice throughout | "The deployment was rolled back by the platform team" | "The platform team rolled back the deployment at 03:42 UTC on Feb 16, 2026" |
+|  | "A decision was made to proceed with Option B" | "The architecture review panel decided on Feb 10, 2026 to proceed with Option B" |
+| | |
+| ☑ No relative time references | "We recently completed the migration and will finalize the cleanup soon" | "We completed the migration on Feb 9, 2026\. Cleanup is scheduled for Feb 28, 2026" |
+|☑ Each paragraph makes one argument | "Caching reduced latency. We also need to hire two engineers. The database is running out of disk space." | Three separate paragraphs, each covering one topic with supporting evidence and a clear next step |
+| | |
+|☑ The document answers a clear question or drives a specific decision| A document titled "Q1 Infrastructure Update" covering 12 unrelated topics with no recommended action | A document titled "Decision Required: Migrate Search to Elasticsearch by Mar 31, 2026 — Cost, Risk, and Recommended Path" |
+| | "This document covers various aspects of our current architecture and some thoughts on potential future directions" | "This document recommends migrating to microservices by Q3 2026 and requests approval to staff a 4-person migration team starting Mar 1, 2026" |
 
 ## Document Formats That Work
 
@@ -212,4 +151,3 @@ Most decisions fail not in execution but in documentation — the reasoning is n
 * [https://www.armandpatella.com/amazon-writing-tips](https://www.armandpatella.com/amazon-writing-tips)  
 * [https://quartr.com/insights/business-philosophy/amazon-s-writing-culture-explained](https://quartr.com/insights/business-philosophy/amazon-s-writing-culture-explained)  
 * [https://medium.com/@apappascs/write-like-an-amazonian-14-tips-for-clear-and-persuasive-communication-e2a11afc7362](https://medium.com/@apappascs/write-like-an-amazonian-14-tips-for-clear-and-persuasive-communication-e2a11afc7362)
-
